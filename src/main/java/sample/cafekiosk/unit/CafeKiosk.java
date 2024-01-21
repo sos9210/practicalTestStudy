@@ -36,10 +36,21 @@ public class CafeKiosk {
     public void clear() {
         beverageList.clear();
     }
+//    public int calculateTotalPrice() {
+//        return beverageList.stream().map(beverage -> beverage.getPrice()).reduce(0, Integer::sum);
+//    }
     public int calculateTotalPrice() {
-        return beverageList.stream().map(beverage -> beverage.getPrice()).reduce(0, Integer::sum);
-    }
+        //테스트주도개발(TDD)
 
+        //RED : 실패하는 케이스 먼저작성
+        //return 0;
+
+        //GREEN : 빠른시간내에 테스트 성공을 위해 최소한의 코딩
+        //return 8500;
+
+        //REFACTOR : 코드를 개선하여 테스트 통과
+        return beverageList.stream().mapToInt(Beverage::getPrice).sum();
+    }
     public Order createOrder() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         LocalTime currentTime = currentDateTime.toLocalTime();
