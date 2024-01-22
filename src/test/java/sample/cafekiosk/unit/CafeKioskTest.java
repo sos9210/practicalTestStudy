@@ -1,6 +1,7 @@
 package sample.cafekiosk.unit;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
 import sample.cafekiosk.unit.beverage.Latte;
@@ -19,6 +20,10 @@ public class CafeKioskTest {
         System.out.println(">>> 담긴 음료 : " + cafeKiosk.getBeverageList().get(0).getName());
     }
 
+    //DisplayName을 작성성할때 떤 문구가 더 이해하기 쉬울지 고민해보자.
+    //테스트 행위를 함으로써 어떤 결과가 나오는지 담는것이 더 좋아보인다. ex) 음료 1개 추가하면 주문 목록에 담긴다.
+    //@DisplayName("음료 1개 추가 테스트")
+    @DisplayName("음료 1개 추가하면 주문 목록에 담긴다.")
     @Test
     void add() {
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -74,8 +79,10 @@ public class CafeKioskTest {
         Assertions.assertThat(cafeKiosk.getBeverageList()).isEmpty();
     }
 
+    @DisplayName("주문목록에 담긴 상품들의 총 금액을 계산할 수 있다.")
     @Test
     void calculateTotalPrice() {
+        //given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
@@ -83,8 +90,10 @@ public class CafeKioskTest {
         cafeKiosk.add(americano);
         cafeKiosk.add(latte);
 
+        //when
         int totalPrice = cafeKiosk.calculateTotalPrice();
 
+        //then
         Assertions.assertThat(totalPrice).isEqualTo(8500);
     }
     @Test
