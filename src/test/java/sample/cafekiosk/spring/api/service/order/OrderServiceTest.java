@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.spring.api.controller.order.reqeust.OrderCreateRequest;
 import sample.cafekiosk.spring.api.service.order.reponse.OrderResponse;
-import sample.cafekiosk.spring.domain.Product;
+import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
 import sample.cafekiosk.spring.domain.orderproduct.OrderProductRepository;
 import sample.cafekiosk.spring.domain.product.ProductRepository;
@@ -20,8 +20,6 @@ import sample.cafekiosk.spring.domain.stock.StockRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ActiveProfiles("test")
 //@DataJpaTest

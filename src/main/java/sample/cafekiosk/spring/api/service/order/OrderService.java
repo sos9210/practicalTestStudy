@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sample.cafekiosk.spring.api.controller.order.reqeust.OrderCreateRequest;
 import sample.cafekiosk.spring.api.service.order.reponse.OrderResponse;
-import sample.cafekiosk.spring.domain.Product;
+import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.order.Order;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
 import sample.cafekiosk.spring.domain.product.ProductRepository;
