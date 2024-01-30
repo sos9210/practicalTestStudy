@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MailServiceTest {
 
     //@Mock을 사용한 주입은 @ExtendWith(MockitoExtension.class)를 사용해줘야 한다.
-    //@Mock
-    @Spy
+    @Mock
+    //@Spy
     private MailSendClient mailSendClient;
 
     @Mock
@@ -27,9 +27,9 @@ class MailServiceTest {
     @InjectMocks
     private MailService mailService;
 
-    @DisplayName("메일 전송 테스트")
+    @DisplayName("메일 전송 테스트1")
     @Test
-    void sendMail() {
+    void sendMail1() {
         //given
 
         //위 필드주입방식의 @Mock과 같다
@@ -55,6 +55,35 @@ class MailServiceTest {
                         ArgumentMatchers.any(String.class),
                         ArgumentMatchers.any(String.class)
                 );
+
+
+
+        //when
+        boolean result = mailService.sendMail("", "", "", "");
+
+        //then
+        Assertions.assertThat(result).isTrue();
+        Mockito.verify(mailSendHistoryRepository, Mockito.times(1))
+                .save(Mockito.any(MailSendHistory.class));
+    }
+    @DisplayName("메일 전송 테스트2")
+    @Test
+    void sendMail2() {
+        //given
+//        Mockito.when(mailSendClient.sendEmail(
+//                        ArgumentMatchers.any(String.class),
+//                        ArgumentMatchers.any(String.class),
+//                        ArgumentMatchers.any(String.class),
+//                        ArgumentMatchers.any(String.class)
+//                )
+//        ).thenReturn(true);
+
+        BDDMockito.given(mailSendClient.sendEmail(
+                ArgumentMatchers.any(String.class),
+                ArgumentMatchers.any(String.class),
+                ArgumentMatchers.any(String.class),
+                ArgumentMatchers.any(String.class)
+        )).willReturn(true);
 
 
 
