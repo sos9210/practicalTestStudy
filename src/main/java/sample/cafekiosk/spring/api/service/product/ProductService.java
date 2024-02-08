@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductNumberFactory productNumberFactory;
 
     // 클래스레벨에 @Transactional(readOnly = true) 적용
     // CUD작업이 필요한 메서드에만 @Transactional을 붙여주는 방식을 권장
@@ -34,7 +35,7 @@ public class ProductService {
         //productNumber
         //001,002,003,004 ....
         //DB에서 마지막 저장된 Product의 상품번호를 읽어와서 +1
-        String nextProductNumber = createNextProductNumber();
+        String nextProductNumber = productNumberFactory.createNextProductNumber();
         //nextProductNumber
         Product product = request.toEntity(nextProductNumber);
         Product savedProduct = productRepository.save(product);
@@ -48,14 +49,14 @@ public class ProductService {
 
         return products.stream().map(ProductResponse::of).collect(Collectors.toList());
     }
-    private String createNextProductNumber() {
-        String latestProductNumber = productRepository.findLatestProductNumber();
-        if( latestProductNumber == null ) {
-            return "001";
-        }
-        int latestProductNumberInt = Integer.parseInt(latestProductNumber);
-        int nextProductNumber = latestProductNumberInt + 1;
-
-        return String.format("%03d",nextProductNumber);
-    }
+//    private String createNextProductNumber() {
+//        String latestProductNumber = productRepository.findLatestProductNumber();
+//        if( latestProductNumber == null ) {
+//            return "001";
+//        }
+//        int latestProductNumberInt = Integer.parseInt(latestProductNumber);
+//        int nextProductNumber = latestProductNumberInt + 1;
+//
+//        return String.format("%03d",nextProductNumber);
+//    }
 }
