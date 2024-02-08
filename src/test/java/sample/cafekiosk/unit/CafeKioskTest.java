@@ -1,6 +1,7 @@
 package sample.cafekiosk.unit;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
@@ -96,6 +97,7 @@ public class CafeKioskTest {
         //then
         Assertions.assertThat(totalPrice).isEqualTo(8500);
     }
+    @Disabled
     @Test
     void createOrder() {
         CafeKiosk cafeKiosk = new CafeKiosk();

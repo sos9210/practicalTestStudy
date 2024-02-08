@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.api.service.order.reponse.OrderResponse;
 import sample.cafekiosk.spring.domain.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk.spring.domain.product.Product;
@@ -21,10 +22,10 @@ import sample.cafekiosk.spring.domain.stock.StockRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@ActiveProfiles("test")
-//@DataJpaTest
-@SpringBootTest
-class OrderServiceTest {
+//@ActiveProfiles("test")
+////@DataJpaTest
+//@SpringBootTest
+class OrderServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;

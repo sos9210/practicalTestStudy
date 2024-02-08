@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.client.mail.MailSendClient;
 import sample.cafekiosk.spring.domain.history.mail.MailSendHistory;
 import sample.cafekiosk.spring.domain.history.mail.MailSendHistoryRepository;
@@ -27,8 +28,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class OrderStatisticsServiceTest {
+//@SpringBootTest
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderStatisticsService orderStatisticsService;
@@ -45,8 +46,16 @@ class OrderStatisticsServiceTest {
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
 
-    @MockBean
-    private MailSendClient mailSendClient;
+    //@MockBean을 사용하면 @SpringBootTest가 아님에도 서버가 새로 띄워지는 비용이 발생한다.
+    /**
+     * 방법1. @MockBean이 적용된 객체를 상위클래스로 이동시키고 접근제어자를 protected로 사용해서 적용한다.
+     */    
+    /**
+     * 방법2. @MockBean을 사용한 방법과 사용하지 않는 방법을 동시에 사용하고싶으면 환경을 2개로 분리하자.
+     *  ex ) IntegrationTestSupport와 같은 상위클래스를 2개 생성하여 사용
+     */
+//    @MockBean
+//    private MailSendClient mailSendClient;
 
     @AfterEach
     void tearDown() {

@@ -12,22 +12,24 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import sample.cafekiosk.spring.ControllerTestSupport;
 import sample.cafekiosk.spring.api.controller.order.reqeust.OrderCreateRequest;
 import sample.cafekiosk.spring.api.service.order.OrderService;
 
 import java.util.List;
 
-@WebMvcTest(controllers = OrderController.class)
-class OrderControllerTest {
+//@WebMvcTest(controllers = OrderController.class)
+class OrderControllerTest extends ControllerTestSupport {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @MockBean
-    private OrderService orderService;
+    //환경 공통화처리.. 상위클래스로 이동
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    @Autowired
+//    private ObjectMapper objectMapper;
+//
+//    @MockBean
+//    private OrderService orderService;
 
     @DisplayName("신규 주문을 등록한다")
     @Test

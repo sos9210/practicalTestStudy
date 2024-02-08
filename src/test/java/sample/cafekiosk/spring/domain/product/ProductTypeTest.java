@@ -87,5 +87,5 @@ class ProductTypeTest {
         //then
         Assertions.assertThat(result).isEqualTo(expected);
     }
-    
+
 }
