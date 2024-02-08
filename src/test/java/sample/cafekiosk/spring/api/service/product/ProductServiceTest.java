@@ -3,6 +3,7 @@ package sample.cafekiosk.spring.api.service.product;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,14 @@ class ProductServiceTest {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @BeforeEach
+    void setUp() {
+
+        //@BeforeEach를 사용하는것은
+        // 각 테스트 입장에서 봤을 때 : 아예 몰라도 테스트 내용을 이해하는데 문제가 없는가?
+        // 수정해도 모든 테스트에 영향을 주지 않는가?
+    }
 
     @AfterEach
     void tearDown() {
