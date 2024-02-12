@@ -63,7 +63,7 @@ public class GuavaLearningTest {
         Assertions.assertThat(strings).hasSize(3)
                 .isEqualTo(List.of("아메리카노","카페라떼","카푸치노"));
     }
-    
+
     @DisplayName("멀티맵 기능은 하나의 key에 여러개의 value를 저장한다")
     @TestFactory
     Collection<DynamicTest> multiMapLearningTest2() {
